@@ -1,5 +1,6 @@
 ". to repeat the last command
 "gv last visual selection
+"g; jump to last change
 
 syntax on
 set number
