@@ -3,5 +3,6 @@
 	mv conf .conf
 
 #make symbolic links to where they are expected to be
+ln -s ~/.conf/inputrc ~/.inputrc
 ln -s ~/.conf/vim ~/.vim
 ln -s ~/.conf/vim/vimrc ~/.vimrc
