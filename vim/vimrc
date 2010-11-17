@@ -1,0 +1,34 @@
+". to repeat the last command
+"gv last visual selection
+
+syntax on
+set number
+
+
+" Only do this part when compiled with support for autocommands
+if has("autocmd")
+" Enable file type detection
+	filetype on
+" Syntax of these languages is fussy over tabs Vs spaces
+	autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+	autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+	
+" Source the vimrc file after saving it
+	autocmd bufwritepost .vimrc source $MYVIMRC
+endif
+
+" Set region to United States
+set spelllang=en_us
+
+" Tabs are not easy to handle it is better
+" to stick to an easy scenario
+" @ts tabstop, @sts softtabstop @sw shiftwidth
+set ts=4 sts=4 sw=4 noexpandtab
+
+
+" Shortcut to rapidly toggle `set list`, 
+" set list! used to show invisible characters
+nmap <leader>l :set list!<CR>
+ 
+" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:▸\ ,eol:¬

@@ -1,1 +1,7 @@
+#To clone this tree run
+	git clone git://github.com/aboSamoor/conf.git
+	mv conf .conf
+
+#make symbolic links to where they are expected to be
+ln -s ~/.conf/vim ~/.vim
 ln -s ~/.conf/vim/vimrc ~/.vimrc
