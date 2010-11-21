@@ -103,6 +103,5 @@ fi
 # added by rmyeid gmail com
 #xmodmap -e "keycode 167 = g G Arabic_lam 8"
 
-PS1="\[\e[1;31m\][\u@\h: \[\e[1;34m\]\w\[\e[1;31m\]] $ \[\e[0m\]"
+PS1="\[\e[1;31m\][\u@\h: \[\e[1;34m\]\W\[\e[1;31m\]] $ \[\e[0m\]"
 
-set -o vi
