@@ -29,7 +29,7 @@ set spelllang=en_us
 " Tabs are not easy to handle it is better
 " to stick to an easy scenario
 " @ts tabstop, @sts softtabstop @sw shiftwidth
-set ts=4 sts=4 sw=4 noexpandtab
+set ts=4 sts=4 sw=4 expandtab
 
 
 " Shortcut to rapidly toggle `set list`, 
