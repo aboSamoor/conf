@@ -1,50 +1,32 @@
-". to repeat the last command
-"gv last visual selection
-"g; jump to last change
-
+set hlsearch
+set ruler
 syntax on
 set number
-set t_Co=256
-colorscheme rami 
-
-"Folding
-set foldmethod=marker
-set foldmarker={,}
-
-" Only do this part when compiled with support for autocommands
-if has("autocmd")
-" Enable file type detection
-	filetype on
-" Syntax of these languages is fussy over tabs Vs spaces
-	autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
-	autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-	
-" Source the vimrc file after saving it
-	autocmd bufwritepost .vimrc source $MYVIMRC
-endif
-
-" Set region to United States
-set spelllang=en_us
+filetype on
+filetype plugin on
 
 " Tabs are not easy to handle it is better
 " to stick to an easy scenario
 " @ts tabstop, @sts softtabstop @sw shiftwidth
-set ts=4 sts=4 sw=4 expandtab
+set ts=2 sts=2 sw=2 expandtab
 
+set textwidth=80
 
-" Shortcut to rapidly toggle `set list`, 
-" set list! used to show invisible characters
+function! Skeleton(file)
+if a:file =~ '.*_test\.py$'
+    keepalt 0r ~/.vim/skel/template_test.py
+elseif a:file =~ '.*\.py$'
+    keepalt 0r ~/.vim/skel/template.py
+endif
+endfunction
+au BufNewFile *.py  :call Skeleton(expand("<afile>"))
+
+au FileType xml setlocal foldmethod=syntax
+au FileType java setlocal foldmethod=syntax
+
+" Shortcut to rapidly toggle `set list`,
+" " set list! used to show invisible characters
 nmap <leader>l :set list!<CR>
- 
-" Use the same symbols as TextMate for tabstops and EOLs
+
+" Use the same symbols as TextMate for tabstops and EOL
 set listchars=tab:▸\ ,eol:¬
-
-
-" Show syntax highlighting groups for word under cursor
-nmap <C-S-L> :call <SID>SynStack()<CR>
-function! <SID>SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
