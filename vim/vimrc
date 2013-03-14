@@ -21,6 +21,7 @@ endif
 endfunction
 au BufNewFile *.py  :call Skeleton(expand("<afile>"))
 
+au FileType python compiler pylint
 au FileType xml setlocal foldmethod=syntax
 au FileType java setlocal foldmethod=syntax
 
